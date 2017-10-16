@@ -1,8 +1,9 @@
-import java.io.*;
-import java.awt.image.*;
-import javax.imageio.*;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-public class Zad3_5 {
+public class Zad4 {
     public static void main(String[] args)
     {
         System.out.println("Ring pattern synthesis");
@@ -23,9 +24,18 @@ public class Zad3_5 {
         int i, j;
 
         // Fixed ring width
-        final int w = 20;
-        x_res = 500;
-        y_res = 500;
+        final int w = 40;
+        x_res = 0;
+        y_res = 0;
+        BufferedImage img1 = null;
+        BufferedImage img2 = null;
+        try{
+            img1 = ImageIO.read(new File("img1.jpg"));
+            img2 = ImageIO.read(new File("img2.jpg"));
+            // Get required image resolution from command line arguments
+            x_res = img1.getWidth();
+            y_res = img1.getHeight();
+        }catch(Exception e){}
 
         // Initialize an empty image, use pixel format
         // with RGB packed in the integer data type
@@ -48,26 +58,24 @@ public class Zad3_5 {
                 int r;
 
                 // Calculate distance to the image center
-                double p = Math.abs(x_c - i );
                 d = Math.sqrt( (i-y_c)*(i-y_c) + (j-x_c)*(j-x_c) );
 
                 // Find the ring index
-                r = (int)(Math.asin(p/d)*100);
-                r = r/w;
+                r = (int)d/w;
                 // Make decision on the pixel color
                 // based on the ring index
                 if (r % 2 == 0)
                     // Even ring - set black color
-                    image.setRGB( j, i, black );
+                    image.setRGB( j, i, img1.getRGB(j, i) );
                 else
                     // Odd ring - set white color
-                    image.setRGB( j, i, white );
+                    image.setRGB( j, i, img2.getRGB(j, i) );
             }
 
         // Save the created image in a graphics file
         try
         {
-            ImageIO.write( image, "bmp", new File( "Zad3_5.bmp" ) );
+            ImageIO.write( image, "bmp", new File( "Zad4.bmp" ) );
             System.out.println( "Ring image created successfully");
         }
         catch (IOException e)
