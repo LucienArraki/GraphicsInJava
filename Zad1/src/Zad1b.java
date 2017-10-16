@@ -36,8 +36,8 @@ public class Zad1b {
                     BufferedImage.TYPE_INT_RGB);
 
             // Create packed RGB representation of black and white colors
-            black = int2RGB( 0, 0, 0 );
-            white = int2RGB( 255, 255, 255 );
+            black = backColour;
+            white = fronColour;
 
             // Find coordinates of the image center
             x_c = x_res / 2;

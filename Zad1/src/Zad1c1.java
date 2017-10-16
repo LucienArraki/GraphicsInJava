@@ -5,7 +5,7 @@ import javax.imageio.*;
 
 public class Zad1c1 {
 
-    public Zad1c1(int x,int y, int width,int colour)
+    public Zad1c1(int x,int y, int width,int backColour,int fronColour)
     {
         System.out.println("Ring pattern synthesis");
 
@@ -37,8 +37,8 @@ public class Zad1c1 {
                 BufferedImage.TYPE_INT_RGB);
 
         // Create packed RGB representation of black and white colors
-        black = int2RGB( 0, 0, 0 );
-        white = int2RGB( 255, 255, 255 );
+        black = backColour;
+        white = fronColour;
 
         // Find coordinates of the image center
         x_c = x_res / 2;
