@@ -47,7 +47,9 @@ public class Zad1b {
             for ( i = 0; i < y_res; i++)
                 for ( j = 0; j < x_res; j++)
                 {
-                    if ((i/nx) % 2 != 0 || (j/ny) % 2 != 0)
+                    int widthWhite = nx-w;
+                    int heightWhite = ny-w;
+                    if (j%nx > widthWhite || i%ny > heightWhite)
                         // Even ring - set black color
                         image.setRGB( j, i, black );
                     else

@@ -1,9 +1,10 @@
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Zad4 {
+public class Zad4_2 {
     public static void main(String[] args)
     {
         System.out.println("Ring pattern synthesis");
@@ -24,7 +25,9 @@ public class Zad4 {
         int i, j;
 
         // Fixed ring width
-        final int w = 40;
+        final int w = 25;
+
+        // Get required image resolution from command line arguments
         x_res = 0;
         y_res = 0;
         BufferedImage img1 = null;
@@ -59,23 +62,25 @@ public class Zad4 {
 
                 // Calculate distance to the image center
                 d = Math.sqrt( (i-y_c)*(i-y_c) + (j-x_c)*(j-x_c) );
-
                 // Find the ring index
-                r = (int)d/w;
-                // Make decision on the pixel color
-                // based on the ring index
-                if (r % 2 == 0)
-                    // Even ring - set black color
-                    image.setRGB( j, i, img1.getRGB(j, i) );
-                else
-                    // Odd ring - set white color
-                    image.setRGB( j, i, img2.getRGB(j, i) );
+
+                int f = (int)(128 * Math.sin(d/w)+128);
+
+                Color c1 = new Color(img1.getRGB(j, i));
+                Color c2 = new Color(img2.getRGB(j, i));
+
+                int red = (int)(f*c1.getRed()/255 + (255-f)*c2.getRed()/255);
+                int green = (int)(f*c1.getGreen()/255 + (255-f)*c2.getGreen()/255);
+                int blue = (int)(f*c1.getBlue()/255 + (255-f)*c2.getBlue()/255);
+
+                int color = int2RGB(red,green,blue);
+                image.setRGB(j, i, color);
             }
 
         // Save the created image in a graphics file
         try
         {
-            ImageIO.write( image, "bmp", new File( "Zad4_1.bmp" ) );
+            ImageIO.write( image, "bmp", new File( "Zad4_2.bmp" ) );
             System.out.println( "Ring image created successfully");
         }
         catch (IOException e)
