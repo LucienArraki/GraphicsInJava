@@ -1,28 +1,39 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
-import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
-public class Buttons extends JButton implements ActionListener{
+public class Buttons extends JButton implements ActionListener {
 
     private JButton saveImage;
     private JButton openImage;
-
+    public JComboBox sketchChange;
+    private JComboBox colorChange;
 
     public Buttons() {
-        saveImage = new JButton("Blue");
-        openImage = new JButton("Red");
+        saveImage = new JButton("Otworz obraz");
+        openImage = new JButton("Zapisz obraz");
+
+        Color color[] = {Color.BLACK,Color.BLUE,Color.RED,Color.PINK,Color.GREEN,Color.CYAN,Color.YELLOW,Color.WHITE};
+        String figures[] = {"Kwadrat","Kolo","Wielokat"};
+
+        sketchChange = new JComboBox<String>(figures);
+        colorChange = new JComboBox<Color>(color);
+        colorChange.setRenderer(new ColorComboRenderer());
 
         saveImage.addActionListener(this);
         openImage.addActionListener(this);
+        sketchChange.addActionListener(this);
+        colorChange.addActionListener(this);
 
         setLayout(new FlowLayout());
         add(saveImage);
         add(openImage);
+        add(sketchChange);
+        add(colorChange);
     }
 
     @Override
@@ -30,41 +41,33 @@ public class Buttons extends JButton implements ActionListener{
         // TODO Auto-generated method stub
         Object source = arg0.getSource();
 
-
-        if(source == saveImage)
+        if (source == saveImage)
             setBackground(Color.BLUE);
 
-        else if(source == openImage)
+        else if (source == openImage)
             setBackground(Color.RED);
     }
 }
 
-class MyPanel extends JPanel {
+class ColorComboRenderer extends JPanel implements ListCellRenderer {
+    private Color m_c = Color.black;
 
-    private BufferedImage image;
-
-    public MyPanel() {
-    }
-
-    public MyPanel(String web){
+    public ColorComboRenderer() {
         super();
-
-        //File imageFile = new File("java.jpg");
-        try {
-            URL myURL = new URL(web);
-            image = ImageIO.read(myURL);
-        } catch (IOException e) {
-            System.err.println("Blad odczytu obrazka");
-            e.printStackTrace();
-        }
-
-        Dimension dimension = new Dimension(image.getWidth(), image.getHeight());
-        setPreferredSize(dimension);
+        setBorder(new CompoundBorder(
+                new MatteBorder(2, 10, 2, 10, Color.white),
+                new LineBorder(Color.black)));
     }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(image, 0, 0, this);
+    public Component getListCellRendererComponent(JList list, Object obj,
+                                                  int row, boolean sel, boolean hasFocus) {
+        if (obj instanceof Color)
+            m_c = (Color) obj;
+        return this;
+    }
+
+    public void paint(Graphics g) {
+        setBackground(m_c);
+        super.paint(g);
     }
 }
