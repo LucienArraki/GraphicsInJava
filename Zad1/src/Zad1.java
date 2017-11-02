@@ -1,6 +1,6 @@
 public class Zad1 {
     public static void main(String[] args) {
-        Zad1a zad1a = new Zad1a(500, 500, 20);
+        Zad1a zad1a = new Zad1a(500, 500, 10);
         Zad1b zad1b = new Zad1b(20, 50, 75, Colour.RED, Colour.BLACK);
         Zad1c1 zad1c1 = new Zad1c1(500, 500, 20, Colour.GREEN,Colour.BLACK);
         Zad1c2 zad1c2 = new Zad1c2(500, 500, 20, Colour.BLACK,Colour.WHITE);

@@ -25,7 +25,7 @@ public class Zad4_2 {
         int i, j;
 
         // Fixed ring width
-        final int w = 25;
+        final int w = 10;
 
         // Get required image resolution from command line arguments
         x_res = 0;
