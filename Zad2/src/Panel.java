@@ -15,8 +15,8 @@ public class Panel {
 
         //Panele
         ramka.add(new Buttons(), BorderLayout.BEFORE_FIRST_LINE);
-        ramka.add(new ImageArea("http://www.komputerswiat.pl/media/2015/320/4096559/emocjep.jpg"), BorderLayout.CENTER);
-        ramka.add(new MousePanel());
+        ramka.setGlassPane(new MousePanel());
+        ramka.add(new Draw());
 
         ramka.setVisible(true);     //Ustawienia
         ramka.setResizable(true);
