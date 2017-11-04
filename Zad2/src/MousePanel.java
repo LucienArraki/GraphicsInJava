@@ -3,16 +3,21 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 public class MousePanel extends JPanel implements MouseListener, MouseMotionListener {
 
     private ButtonMenu buttonMenu;      //Panel przycisków
     private Point point;
+    private ArrayList<MyShape> arrayListMyShape;
+    private ImagePanel imagePanel;
 
     public MousePanel() {
     }
 
-    public MousePanel(ButtonMenu buttonMenu) {
+    public MousePanel(ButtonMenu buttonMenu, ImagePanel imagePanel) {
+        this.imagePanel = imagePanel;
+        arrayListMyShape = imagePanel.arrayListMyShape;
         this.buttonMenu = buttonMenu;
         setVisible(true);
     }
@@ -28,17 +33,21 @@ public class MousePanel extends JPanel implements MouseListener, MouseMotionList
 
     @Override
     public void mousePressed(MouseEvent e) {    //Wcisniecie
-
-        System.out.println("tak");
         point = new Point(e.getX(),e.getY());
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {   //Puszczenie
-        System.out.println("nie");
-        Draw draw = new Draw(point,new Point(e.getX(),e.getY()),
+        MyShape myShape = new MyShape(point,new Point(e.getX(),e.getY()),
                 buttonMenu.getSketchChange().getSelectedItem().toString(),
                     buttonMenu.getColorChange().getSelectedItem());
+        arrayListMyShape.add(myShape);      //Tworzenie tablicy figur narysowanych
+        imagePanel.repaint();
+    }
+
+    @Override
+    public void paintComponents(Graphics g) {
+        super.paintComponents(g);
     }
 
     @Override

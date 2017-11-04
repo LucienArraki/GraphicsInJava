@@ -14,12 +14,15 @@ public class ButtonMenu extends JButton implements ActionListener {
     private JComboBox colorChange;
 
     public ButtonMenu() {
+        //Nazwy przycisków
         saveImage = new JButton("Otworz obraz");
         openImage = new JButton("Zapisz obraz");
 
+        //Listy figur
         Color color[] = {Color.BLACK,Color.BLUE,Color.RED,Color.PINK,Color.GREEN,Color.CYAN,Color.YELLOW,Color.WHITE};
         String figures[] = {"Kwadrat","Kolo","Wielokat"};
 
+        //Utworzenie ComboBox
         sketchChange = new JComboBox<String>(figures);
         colorChange = new JComboBox<Color>(color);
         colorChange.setRenderer(new ColorComboRenderer());

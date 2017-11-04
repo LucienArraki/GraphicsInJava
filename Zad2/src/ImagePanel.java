@@ -1,25 +1,26 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class ImagePanel extends JPanel {
 
     private BufferedImage image;    //Obraz
     private MousePanel mousePanel;  //Panel myszy
+    public ArrayList<MyShape> arrayListMyShape;
 
     public ImagePanel() {
     }
 
     public ImagePanel(ButtonMenu buttonMenu, String name) {
+        arrayListMyShape = new ArrayList<MyShape>();
 
         //Nasluchiwanie na myszy
-        mousePanel = new MousePanel(buttonMenu);
+        mousePanel = new MousePanel(buttonMenu, this);
         addMouseListener(mousePanel);
         addMouseMotionListener(mousePanel);
 
@@ -40,8 +41,11 @@ public class ImagePanel extends JPanel {
     }
 
     @Override
-    public void paintComponent(Graphics g) {    //Ustawienie obrazu
+    public void paintComponent(Graphics g) {    //Wstawienie obrazu i figur
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(image, 0, 0, this);
+        g2d.drawImage(image,0,0,this);
+        for (MyShape shape:arrayListMyShape){
+            g2d.draw(shape.figureSketch());
+        }
     }
 }

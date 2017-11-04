@@ -18,12 +18,13 @@ public class Panel {
         menuBar.add(buttonMenu);
         ramka.setJMenuBar(menuBar);
 
+
         //Panele
         ImagePanel imagePanel = new ImagePanel(buttonMenu,"image");
         ramka.add(imagePanel);
 
         ramka.setVisible(true);     //Ustawienia
-        ramka.setResizable(true);
+        ramka.setResizable(false);
         ramka.pack();
     }
 
