@@ -10,7 +10,7 @@ public class ButtonMenu extends JButton implements ActionListener {
 
     private JButton saveImage;
     private JButton openImage;
-    public JComboBox sketchChange;
+    private JComboBox sketchChange;
     private JComboBox colorChange;
 
     public ButtonMenu() {
@@ -47,7 +47,16 @@ public class ButtonMenu extends JButton implements ActionListener {
         else if (source == openImage)
             setBackground(Color.RED);
     }
+
+    public JComboBox getSketchChange() {
+        return sketchChange;
+    }
+
+    public JComboBox getColorChange() {
+        return colorChange;
+    }
 }
+
 class ColorComboRenderer extends JPanel implements ListCellRenderer {
     private Color m_c = Color.black;
 

@@ -10,21 +10,17 @@ public class Panel {
         ramka = new JFrame();
         ramka.setTitle("Zad2 Grafika kompiterowa");     //Tytuł aplikacji
 
-
         ramka.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       //Wyłącz
 
-        JMenuBar menuBar = new JMenuBar();      //Panel Menu
-        menuBar.add(new ButtonMenu());
-
+        //Panel Menu
+        JMenuBar menuBar = new JMenuBar();
+        ButtonMenu buttonMenu = new ButtonMenu();
+        menuBar.add(buttonMenu);
         ramka.setJMenuBar(menuBar);
 
         //Panele
-        ramka.add(new ButtonMenu(), BorderLayout.BEFORE_FIRST_LINE);
-        ramka.setContentPane(new ImagePanel());
-        ramka.add(new Draw());
-
-        //Glass Panele
-
+        ImagePanel imagePanel = new ImagePanel(buttonMenu,"image");
+        ramka.add(imagePanel);
 
         ramka.setVisible(true);     //Ustawienia
         ramka.setResizable(true);
