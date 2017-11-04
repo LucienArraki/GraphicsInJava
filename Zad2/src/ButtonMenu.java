@@ -6,14 +6,14 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
-public class Buttons extends JButton implements ActionListener {
+public class ButtonMenu extends JButton implements ActionListener {
 
     private JButton saveImage;
     private JButton openImage;
     public JComboBox sketchChange;
     private JComboBox colorChange;
 
-    public Buttons() {
+    public ButtonMenu() {
         saveImage = new JButton("Otworz obraz");
         openImage = new JButton("Zapisz obraz");
 
@@ -48,7 +48,6 @@ public class Buttons extends JButton implements ActionListener {
             setBackground(Color.RED);
     }
 }
-
 class ColorComboRenderer extends JPanel implements ListCellRenderer {
     private Color m_c = Color.black;
 

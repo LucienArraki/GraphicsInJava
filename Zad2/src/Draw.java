@@ -3,14 +3,18 @@ import java.awt.*;
 
 public class Draw extends JPanel {
     public Draw() {
-        setPreferredSize(new Dimension(570,350));
+        setPreferredSize(new Dimension(570, 350));
+
+        MousePanel mousePanel = new MousePanel();
+        addMouseListener(mousePanel);
+        addMouseMotionListener(mousePanel);
     }
 
     //public Draw(Point xy1,Point xy2){
-    public Draw(Dimension dimension){
+    public Draw(Dimension dimension) {
         setPreferredSize(dimension);
-
     }
+
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;

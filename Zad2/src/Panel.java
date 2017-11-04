@@ -13,10 +13,18 @@ public class Panel {
 
         ramka.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       //Wyłącz
 
+        JMenuBar menuBar = new JMenuBar();      //Panel Menu
+        menuBar.add(new ButtonMenu());
+
+        ramka.setJMenuBar(menuBar);
+
         //Panele
-        ramka.add(new Buttons(), BorderLayout.BEFORE_FIRST_LINE);
-        ramka.setGlassPane(new MousePanel());
+        ramka.add(new ButtonMenu(), BorderLayout.BEFORE_FIRST_LINE);
+        ramka.setContentPane(new ImagePanel());
         ramka.add(new Draw());
+
+        //Glass Panele
+
 
         ramka.setVisible(true);     //Ustawienia
         ramka.setResizable(true);
