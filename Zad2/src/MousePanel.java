@@ -33,14 +33,14 @@ public class MousePanel extends JPanel implements MouseListener, MouseMotionList
 
     @Override
     public void mousePressed(MouseEvent e) {    //Wcisniecie
-        point = new Point(e.getX(),e.getY());
+        point = new Point(e.getX(), e.getY());
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {   //Puszczenie
-        MyShape myShape = new MyShape(point,new Point(e.getX(),e.getY()),
+        MyShape myShape = new MyShape(point, new Point(e.getX(), e.getY()),
                 buttonMenu.getSketchChange().getSelectedItem().toString(),
-                    buttonMenu.getColorChange().getSelectedItem());
+                buttonMenu.getColorChange().getSelectedItem());
         arrayListMyShape.add(myShape);      //Tworzenie tablicy figur narysowanych
         imagePanel.repaint();
     }
@@ -51,12 +51,15 @@ public class MousePanel extends JPanel implements MouseListener, MouseMotionList
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {}    //Klinkiecie w miejscu
+    public void mouseClicked(MouseEvent e) {
+    }    //Klinkiecie w miejscu
 
 
     @Override
-    public void mouseEntered(MouseEvent e) {}    //Wejscie w panel
+    public void mouseEntered(MouseEvent e) {
+    }    //Wejscie w panel
 
     @Override
-    public void mouseExited(MouseEvent e) {}     //Wyjscie z panelu
+    public void mouseExited(MouseEvent e) {
+    }     //Wyjscie z panelu
 }

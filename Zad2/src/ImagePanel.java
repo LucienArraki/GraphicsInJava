@@ -43,8 +43,9 @@ public class ImagePanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {    //Wstawienie obrazu i figur
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(image,0,0,this);
-        for (MyShape shape:arrayListMyShape){
+        g2d.drawImage(image, 0, 0, this);
+        for (MyShape shape : arrayListMyShape) {
+            g2d.setColor(shape.color);
             g2d.draw(shape.figureSketch());
         }
     }

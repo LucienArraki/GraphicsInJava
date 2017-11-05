@@ -20,7 +20,7 @@ public class Panel {
 
 
         //Panele
-        ImagePanel imagePanel = new ImagePanel(buttonMenu,"image");
+        ImagePanel imagePanel = new ImagePanel(buttonMenu, "image");
         ramka.add(imagePanel);
 
         ramka.setVisible(true);     //Ustawienia

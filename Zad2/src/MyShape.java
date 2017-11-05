@@ -11,7 +11,7 @@ public class MyShape {
     private int width;
 
     private String sketch;
-    private Color color;
+    protected Color color;
 
     public MyShape() {
     }
@@ -31,6 +31,6 @@ public class MyShape {
         } else if (sketch == "Kolo") {
             return new Ellipse2D.Double(xy1.getX(), xy1.getY(), width, height);
         }
-        return new Line2D.Double(xy1,xy2);
+        return new Line2D.Double(xy1, xy2);
     }
 }

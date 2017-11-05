@@ -19,8 +19,8 @@ public class ButtonMenu extends JButton implements ActionListener {
         openImage = new JButton("Zapisz obraz");
 
         //Listy figur
-        Color color[] = {Color.BLACK,Color.BLUE,Color.RED,Color.PINK,Color.GREEN,Color.CYAN,Color.YELLOW,Color.WHITE};
-        String figures[] = {"Kwadrat","Kolo","Wielokat"};
+        Color color[] = {Color.BLACK, Color.BLUE, Color.RED, Color.PINK, Color.GREEN, Color.CYAN, Color.YELLOW, Color.WHITE};
+        String figures[] = {"Kwadrat", "Kolo", "Wielokat"};
 
         //Utworzenie ComboBox
         sketchChange = new JComboBox<String>(figures);
