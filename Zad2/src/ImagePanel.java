@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
+
 public class ImagePanel extends JPanel {
 
     private BufferedImage image;    //Obraz
     private MousePanel mousePanel;  //Panel myszy
-    public ArrayList<MyShape> arrayListMyShape;
+    protected ArrayList<MyShape> arrayListMyShape;
 
     public ImagePanel() {
     }

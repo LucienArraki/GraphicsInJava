@@ -11,11 +11,13 @@ public class MousePanel extends JPanel implements MouseListener, MouseMotionList
     private Point point;
     private ArrayList<MyShape> arrayListMyShape;
     private ImagePanel imagePanel;
+    protected ArrayList<Point> points;
 
     public MousePanel() {
     }
 
     public MousePanel(ButtonMenu buttonMenu, ImagePanel imagePanel) {
+        this.points = new ArrayList<Point>();
         this.imagePanel = imagePanel;
         arrayListMyShape = imagePanel.arrayListMyShape;
         this.buttonMenu = buttonMenu;
@@ -51,8 +53,24 @@ public class MousePanel extends JPanel implements MouseListener, MouseMotionList
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-    }    //Klinkiecie w miejscu
+    public void mouseClicked(MouseEvent e) {    //Przycisniecie
+        String polygon = buttonMenu.getSketchChange().getSelectedItem().toString();
+
+        if (polygon == "Wielokat") {
+            if (points.size() > 2 && Math.sqrt(Math.pow(e.getX() - points.get(0).getX(), 2)
+                    + Math.pow(e.getY() - points.get(0).getY(), 2)) < 50) {
+                System.out.println(points.size());
+
+                MyShape myShape = new MyShape(this,
+                        buttonMenu.getSketchChange().getSelectedItem().toString(),
+                        buttonMenu.getColorChange().getSelectedItem());
+                arrayListMyShape.add(myShape);
+                imagePanel.repaint();
+            } else
+                points.add(new Point(e.getX(), e.getY()));
+
+        }
+    }
 
 
     @Override

@@ -1,6 +1,10 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
@@ -44,8 +48,9 @@ public class ButtonMenu extends JButton implements ActionListener {
         // TODO Auto-generated method stub
         Object source = arg0.getSource();
 
-        if (source == saveImage)
-            setBackground(Color.BLUE);
+        if (source == saveImage){
+
+        }
 
         else if (source == openImage)
             setBackground(Color.RED);
@@ -57,6 +62,22 @@ public class ButtonMenu extends JButton implements ActionListener {
 
     public JComboBox getColorChange() {
         return colorChange;
+    }
+
+    public static boolean saveFile(ArrayList<MyShape> selections){
+        try {
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter("save.txt"));
+            for(MyShape selection : selections){
+                writer.write(selection.toSerializableString() + "\n");
+            }
+            writer.close();
+            return true;
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            return false;
+        }
     }
 }
 
