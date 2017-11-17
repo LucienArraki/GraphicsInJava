@@ -1,3 +1,3 @@
-# GraphicsInJava
+# GraphicsInJavaZad1
 
-Zadanie z przedmiotu Grafika komputerowa na studiach. Zadania okienkowe z Java.
+Zadanie pierwsze
